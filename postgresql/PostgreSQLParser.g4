@@ -3558,12 +3558,27 @@ func_application
 
 func_expr
    : func_application within_group_clause? filter_clause? over_clause?
+   | json_aggregate_func filter_clause? over_clause?
    | func_expr_common_subexpr
    ;
 
 func_expr_windowless
    : func_application
    | func_expr_common_subexpr
+   | json_aggregate_func
+   ;
+
+json_aggregate_func
+   : JSON_OBJECTAGG OPEN_PAREN json_name_and_value json_object_constructor_null_clause? json_key_uniqueness_constraint? json_output_clause? CLOSE_PAREN
+   | JSON_ARRAYAGG OPEN_PAREN json_value_expr json_array_aggregate_order_by_clause? json_array_constructor_null_clause? json_output_clause? CLOSE_PAREN
+   ;
+
+json_output_clause
+   : RETURNING typename json_format_clause?
+   ;
+
+json_array_aggregate_order_by_clause
+   : ORDER BY sortby_list
    ;
 
 func_expr_common_subexpr
@@ -3599,6 +3614,125 @@ func_expr_common_subexpr
    | XMLPI OPEN_PAREN NAME_P collabel (COMMA a_expr)? CLOSE_PAREN
    | XMLROOT OPEN_PAREN XML_P a_expr COMMA xml_root_version opt_xml_root_standalone? CLOSE_PAREN
    | XMLSERIALIZE OPEN_PAREN document_or_content a_expr AS simpletypename CLOSE_PAREN
+   | JSON_OBJECT '(' func_arg_list ')'
+   | JSON_OBJECT '(' json_name_and_value_list json_object_constructor_null_clause? json_key_uniqueness_constraint? json_returning_clause? ')'
+   | JSON_OBJECT '(' json_returning_clause? ')'
+   | JSON_ARRAY '(' json_value_expr_list json_array_constructor_null_clause? json_returning_clause? ')'
+   | JSON_ARRAY '(' select_no_parens json_format_clause_opt? json_returning_clause? ')'
+   | JSON_ARRAY '(' json_returning_clause? ')'
+   | JSON '(' json_value_expr json_key_uniqueness_constraint? ')'
+   | JSON_SCALAR '(' a_expr ')'
+   | JSON_SERIALIZE '(' json_value_expr json_returning_clause? ')'
+   | MERGE_ACTION '(' ')'
+   | JSON_QUERY '('
+				json_value_expr ',' a_expr json_passing_clause?
+				json_returning_clause?
+				json_wrapper_behavior
+				json_quotes_clause?
+				json_behavior_clause?
+			')'
+   | JSON_EXISTS '('
+				json_value_expr ',' a_expr json_passing_clause?
+				json_on_error_clause?
+			')'
+   | JSON_VALUE '('
+				json_value_expr ',' a_expr json_passing_clause?
+				json_returning_clause?
+				json_behavior_clause?
+			')'
+   ;
+
+json_on_error_clause
+   : json_behavior ON ERROR
+   ;
+
+json_behavior_clause
+   : json_behavior ON EMPTY
+   | json_behavior ON ERROR
+   | json_behavior ON EMPTY json_behavior ON ERROR
+   ;
+
+json_behavior
+   : DEFAULT a_expr
+   | json_behavior_type
+   ;
+
+json_behavior_type
+   : ERROR
+   | NULL_P
+   | TRUE_P
+   | FALSE_P
+   | UNKNOWN
+   | EMPTY ARRAY
+   | EMPTY OBJECT_P
+   | EMPTY
+   ;
+
+json_quotes_clause
+   : (KEEP | OMIT) QUOTES (ON SCALAR STRING)
+   ;
+
+json_wrapper_behavior
+   : WITHOUT ARRAY? WRAPPER
+   | WITH (CONDITIONAL | UNCONDITIONAL)? ARRAY? WRAPPER
+   ;
+
+json_passing_clause
+   : PASSING json_arguments
+   ;
+
+json_arguments
+   : json_argument (COMMA json_argument)*
+   ;
+
+json_argument
+   : json_value_expr AS collabel
+   ;
+
+json_format_clause_opt
+   : FORMAT JSON ENCODING name
+   | FORMAT JSON
+   ;
+
+json_value_expr_list
+   : json_value_expr (COMMA json_value_expr)*
+   ;
+
+json_returning_clause
+   : RETURNING typename json_format_clause?
+   ;
+
+json_key_uniqueness_constraint
+   : WITH UNIQUE KEYS?
+   | WITHOUT UNIQUE KEYS?
+   ;
+
+json_array_constructor_null_clause
+   : NULL_P ON NULL_P
+   | ABSENT ON NULL_P
+   ;
+
+json_object_constructor_null_clause
+   : NULL_P ON NULL_P
+   | ABSENT ON NULL_P
+   ;
+
+json_name_and_value_list
+   : json_name_and_value (COMMA json_name_and_value)*
+   ;
+
+json_name_and_value
+   : c_expr VALUE_P json_value_expr
+   | a_expr COLON json_value_expr
+   ;
+
+json_value_expr
+   : a_expr json_format_clause?
+   ;
+
+json_format_clause
+   : FORMAT JSON ENCODING name
+   | FORMAT JSON
    ;
 
 xml_root_version
@@ -4056,6 +4190,7 @@ plsqlidentifier
 
 unreserved_keyword
    : ABORT_P
+   | ABSENT
    | ABSOLUTE_P
    | ACCESS
    | ACTION
@@ -4147,6 +4282,7 @@ unreserved_keyword
    | FIRST_P
    | FOLLOWING
    | FORCE
+   | FORMAT
    | FORWARD
    | FUNCTION
    | FUNCTIONS
@@ -4178,7 +4314,9 @@ unreserved_keyword
    | INSTEAD
    | INVOKER
    | ISOLATION
+   | JSON
    | KEY
+   | KEYS
    | LABEL
    | LANGUAGE
    | LARGE_P
@@ -4307,6 +4445,7 @@ unreserved_keyword
    | STORAGE
    | STORED
    | STRICT_P
+   | STRING
    | STRIP_P
    | SUBSCRIPTION
    | SUPPORT
@@ -4376,6 +4515,10 @@ col_name_keyword
    | INT_P
    | INTEGER
    | INTERVAL
+   | JSON_ARRAY
+   | JSON_ARRAYAGG
+   | JSON_OBJECT
+   | JSON_OBJECTAGG
    | LEAST
    | NATIONAL
    | NCHAR
