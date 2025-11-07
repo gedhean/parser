@@ -1,4 +1,4 @@
-module github.com/bytebase/parser
+module github.com/gedhean/parser
 
 go 1.24.5
 

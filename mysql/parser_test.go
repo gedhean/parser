@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	mysql "github.com/bytebase/parser/mysql"
+	mysql "github.com/gedhean/parser/mysql"
 	"github.com/stretchr/testify/require"
 )
 

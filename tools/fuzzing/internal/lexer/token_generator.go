@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/bytebase/parser/tools/fuzzing/internal/grammar"
+	"github.com/gedhean/parser/tools/fuzzing/internal/grammar"
 )
 
 // TokenGenerator generates tokens from lexer rules

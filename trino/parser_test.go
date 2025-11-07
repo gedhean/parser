@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	trino "github.com/bytebase/parser/trino"
+	trino "github.com/gedhean/parser/trino"
 	"github.com/stretchr/testify/require"
 )
 

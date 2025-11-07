@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	doris "github.com/bytebase/parser/doris"
+	doris "github.com/gedhean/parser/doris"
 	"github.com/stretchr/testify/require"
 )
 

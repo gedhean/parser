@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	"github.com/bytebase/parser/redshift"
+	"github.com/gedhean/parser/redshift"
 	"github.com/stretchr/testify/require"
 )
 

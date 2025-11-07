@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	googlesql "github.com/bytebase/parser/googlesql"
+	googlesql "github.com/gedhean/parser/googlesql"
 	"github.com/stretchr/testify/require"
 )
 

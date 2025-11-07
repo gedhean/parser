@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	tidb "github.com/bytebase/parser/tidb"
+	tidb "github.com/gedhean/parser/tidb"
 	"github.com/stretchr/testify/require"
 )
 

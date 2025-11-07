@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	bq "github.com/bytebase/parser/bq"
+	bq "github.com/gedhean/parser/bq"
 	"github.com/stretchr/testify/require"
 )
 

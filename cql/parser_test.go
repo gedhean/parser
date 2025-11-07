@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/antlr4-go/antlr/v4"
-	cqlparser "github.com/bytebase/parser/cql"
+	cqlparser "github.com/gedhean/parser/cql"
 	"github.com/stretchr/testify/require"
 )
 

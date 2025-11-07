@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bytebase/parser/tools/fuzzing/internal/grammar"
+	"github.com/gedhean/parser/tools/fuzzing/internal/grammar"
 )
 
 // TestTokenGeneratorBasic tests basic token generation functionality

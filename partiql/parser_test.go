@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	partiql "github.com/bytebase/parser/partiql"
+	partiql "github.com/gedhean/parser/partiql"
 	"github.com/stretchr/testify/require"
 )
 

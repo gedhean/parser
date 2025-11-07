@@ -6,8 +6,8 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/bytebase/parser/tools/fuzzing/internal/config"
-	"github.com/bytebase/parser/tools/fuzzing/internal/generator"
+	"github.com/gedhean/parser/tools/fuzzing/internal/config"
+	"github.com/gedhean/parser/tools/fuzzing/internal/generator"
 )
 
 // getRepoRoot finds the repository root directory

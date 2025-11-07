@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	plsql "github.com/bytebase/parser/plsql"
+	plsql "github.com/gedhean/parser/plsql"
 	"github.com/stretchr/testify/require"
 )
 

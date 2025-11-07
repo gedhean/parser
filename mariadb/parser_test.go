@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	mariadb "github.com/bytebase/parser/mariadb"
+	mariadb "github.com/gedhean/parser/mariadb"
 	"github.com/stretchr/testify/require"
 )
 

@@ -5,8 +5,8 @@ import (
 	"math/rand"
 	"strings"
 
-	"github.com/bytebase/parser/tools/fuzzing/internal/config"
-	"github.com/bytebase/parser/tools/fuzzing/internal/grammar"
+	"github.com/gedhean/parser/tools/fuzzing/internal/config"
+	"github.com/gedhean/parser/tools/fuzzing/internal/grammar"
 	"github.com/pkg/errors"
 )
 

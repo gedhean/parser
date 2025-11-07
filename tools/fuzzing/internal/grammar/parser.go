@@ -7,7 +7,7 @@ import (
 
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/pkg/errors"
-	grammar "github.com/bytebase/parser/tools/grammar"
+	grammar "github.com/gedhean/parser/tools/grammar"
 )
 
 // ParsedGrammar represents a parsed grammar with extracted rules

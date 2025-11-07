@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	cosmosdb "github.com/bytebase/parser/cosmosdb"
+	cosmosdb "github.com/gedhean/parser/cosmosdb"
 	"github.com/stretchr/testify/require"
 )
 

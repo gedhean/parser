@@ -13,7 +13,7 @@ This parser supports CQL3 syntax as used by:
 ## Usage
 
 ```go
-import "github.com/bytebase/parser/cql"
+import "github.com/gedhean/parser/cql"
 
 // Parse a CQL statement
 tree, err := cql.ParseCQL("SELECT * FROM users WHERE id = 123;")

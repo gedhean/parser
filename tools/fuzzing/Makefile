@@ -5,7 +5,7 @@ all: test
 # Run tests
 test:
 	@echo "Running tests..."
-	go test -v github.com/bytebase/parser/tools/fuzzing/...
+	go test -v github.com/gedhean/parser/tools/fuzzing/...
 
 # Clean build artifacts  
 clean:
@@ -20,7 +20,7 @@ deps:
 # Format code
 fmt:
 	@echo "Formatting code..."
-	go fmt github.com/bytebase/parser/tools/fuzzing/...
+	go fmt github.com/gedhean/parser/tools/fuzzing/...
 
 # Run linter
 lint:

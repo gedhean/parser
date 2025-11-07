@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	tsql "github.com/bytebase/parser/tsql"
+	tsql "github.com/gedhean/parser/tsql"
 	"github.com/stretchr/testify/require"
 )
 

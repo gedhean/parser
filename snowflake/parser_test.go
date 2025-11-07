@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/antlr4-go/antlr/v4"
-	snowflake "github.com/bytebase/parser/snowflake"
+	snowflake "github.com/gedhean/parser/snowflake"
 	"github.com/stretchr/testify/require"
 )
 

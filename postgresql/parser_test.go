@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/antlr4-go/antlr/v4"
-	pgparser "github.com/bytebase/parser/postgresql"
+	pgparser "github.com/gedhean/parser/postgresql"
 	"github.com/stretchr/testify/require"
 )
 
